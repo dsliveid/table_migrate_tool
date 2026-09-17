@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- 背景渐变 (深邃科技蓝黑) -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b132b" />
+      <stop offset="50%" stop-color="#111c3a" />
+      <stop offset="100%" stop-color="#060b1a" />
+    </linearGradient>
+
+    <!-- 边框微光 -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#818cf8" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- 源数据库渐变 (深蓝到亮蓝，微软SQL蓝) -->
+    <linearGradient id="srcCylinder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="20%" stop-color="#2563eb" />
+      <stop offset="60%" stop-color="#3b82f6" />
+      <stop offset="85%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#172554" />
+    </linearGradient>
+    <linearGradient id="srcCap" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#dbeafe" />
+      <stop offset="35%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="srcCapInner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <!-- 目标数据库渐变 (科技翡翠绿，代表同步成功与就绪) -->
+    <linearGradient id="dstCylinder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="20%" stop-color="#059669" />
+      <stop offset="60%" stop-color="#10b981" />
+      <stop offset="85%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#022c22" />
+    </linearGradient>
+    <linearGradient id="dstCap" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d1fae5" />
+      <stop offset="35%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="dstCapInner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <!-- 迁移光束渐变 -->
+    <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="45%" stop-color="#67e8f9" />
+      <stop offset="75%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <!-- 表格卡片背景 -->
+    <linearGradient id="tableCardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- 柔和发光滤镜 -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="strongGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 图标底板 (圆角矩形，现代应用质感，rx=112) -->
+  <rect x="20" y="20" width="472" height="472" rx="112" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="6" />
+
+  <!-- 背景轻量网格点阵 (科技律动) -->
+  <g opacity="0.1" fill="#94a3b8">
+    <circle cx="80" cy="80" r="3" />
+    <circle cx="120" cy="80" r="3" />
+    <circle cx="160" cy="80" r="3" />
+    <circle cx="352" cy="80" r="3" />
+    <circle cx="392" cy="80" r="3" />
+    <circle cx="432" cy="80" r="3" />
+    <circle cx="80" cy="432" r="3" />
+    <circle cx="120" cy="432" r="3" />
+    <circle cx="160" cy="432" r="3" />
+    <circle cx="352" cy="432" r="3" />
+    <circle cx="392" cy="432" r="3" />
+    <circle cx="432" cy="432" r="3" />
+  </g>
+
+  <!-- ==================== 左侧：源数据库/源表 (蓝色系) ==================== -->
+  <g id="source_db" transform="translate(62, 175)">
+    <!-- 投影 -->
+    <ellipse cx="78" cy="205" rx="70" ry="20" fill="#000000" opacity="0.45" />
+
+    <!-- 盘片 3 (底层) -->
+    <path d="M 8,135 A 70,22 0 0,0 148,135 V 168 A 70,22 0 0,1 8,168 Z" fill="url(#srcCylinder)" />
+    <ellipse cx="78" cy="135" rx="70" ry="22" fill="url(#srcCap)" opacity="0.85" />
+    <path d="M 22,152 Q 78,168 134,152" fill="none" stroke="#60a5fa" stroke-width="2" opacity="0.5" />
+
+    <!-- 盘片 2 (中层) -->
+    <path d="M 8,75 A 70,22 0 0,0 148,75 V 108 A 70,22 0 0,1 8,108 Z" fill="url(#srcCylinder)" />
+    <ellipse cx="78" cy="75" rx="70" ry="22" fill="url(#srcCap)" opacity="0.85" />
+    <path d="M 22,92 Q 78,108 134,92" fill="none" stroke="#60a5fa" stroke-width="2" opacity="0.5" />
+
+    <!-- 盘片 1 (顶层) -->
+    <path d="M 8,15 A 70,22 0 0,0 148,15 V 48 A 70,22 0 0,1 8,48 Z" fill="url(#srcCylinder)" />
+    <ellipse cx="78" cy="15" rx="70" ry="22" fill="url(#srcCap)" />
+
+    <!-- 盘片顶层同心科技光环 -->
+    <ellipse cx="78" cy="15" rx="46" ry="14" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.75" />
+    <ellipse cx="78" cy="15" rx="22" ry="7" fill="url(#srcCapInner)" opacity="0.9" />
+  </g>
+
+  <!-- ==================== 右侧：目标数据库/目标表 (翡翠绿系) ==================== -->
+  <g id="target_db" transform="translate(294, 175)">
+    <!-- 投影 -->
+    <ellipse cx="78" cy="205" rx="70" ry="20" fill="#000000" opacity="0.45" />
+
+    <!-- 盘片 3 (底层) -->
+    <path d="M 8,135 A 70,22 0 0,0 148,135 V 168 A 70,22 0 0,1 8,168 Z" fill="url(#dstCylinder)" />
+    <ellipse cx="78" cy="135" rx="70" ry="22" fill="url(#dstCap)" opacity="0.85" />
+    <path d="M 22,152 Q 78,168 134,152" fill="none" stroke="#34d399" stroke-width="2" opacity="0.5" />
+
+    <!-- 盘片 2 (中层) -->
+    <path d="M 8,75 A 70,22 0 0,0 148,75 V 108 A 70,22 0 0,1 8,108 Z" fill="url(#dstCylinder)" />
+    <ellipse cx="78" cy="75" rx="70" ry="22" fill="url(#dstCap)" opacity="0.85" />
+    <path d="M 22,92 Q 78,108 134,92" fill="none" stroke="#34d399" stroke-width="2" opacity="0.5" />
+
+    <!-- 盘片 1 (顶层) -->
+    <path d="M 8,15 A 70,22 0 0,0 148,15 V 48 A 70,22 0 0,1 8,48 Z" fill="url(#dstCylinder)" />
+    <ellipse cx="78" cy="15" rx="70" ry="22" fill="url(#dstCap)" />
+
+    <!-- 盘片顶层同心科技光环 -->
+    <ellipse cx="78" cy="15" rx="46" ry="14" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.75" />
+    <ellipse cx="78" cy="15" rx="22" ry="7" fill="url(#dstCapInner)" opacity="0.9" />
+  </g>
+
+  <!-- ==================== 中间：高速数据迁移光轨与表格飞行流 ==================== -->
+  <!-- 迁移光晕外层 -->
+  <path d="M 152,192 C 190,80 322,80 360,172" fill="none" stroke="url(#beamGrad)" stroke-width="20" stroke-linecap="round" filter="url(#strongGlow)" opacity="0.85" />
+  
+  <!-- 迁移实体光轨 -->
+  <path d="M 152,192 C 190,80 322,80 360,172" fill="none" stroke="url(#beamGrad)" stroke-width="12" stroke-linecap="round" />
+  <path d="M 152,192 C 190,80 322,80 360,172" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" opacity="0.95" />
+
+  <!-- 迁移动态大箭头 (顺势汇入右侧数据库) -->
+  <g transform="translate(362, 178) rotate(32)">
+    <polygon points="0,-16 26,0 0,16 5,0" fill="#10b981" filter="url(#softGlow)" />
+    <polygon points="0,-16 26,0 0,16 5,0" fill="#ffffff" opacity="0.95" />
+  </g>
+
+  <!-- 弧线最高处：正在迁移的“数据表” (Table Sheet Badge) -->
+  <g transform="translate(256, 92)">
+    <!-- 阴影 -->
+    <rect x="-42" y="-32" width="84" height="66" rx="14" fill="#000000" opacity="0.55" />
+    <!-- 卡片主体 -->
+    <rect x="-42" y="-34" width="84" height="66" rx="14" fill="url(#tableCardBg)" stroke="#38bdf8" stroke-width="3" filter="url(#softGlow)" />
+    
+    <!-- 表头栏 (深邃天蓝渐变) -->
+    <path d="M -40,-20 Q -40,-32 -28,-32 L 28,-32 Q 40,-32 40,-20 L 40,-11 L -40,-11 Z" fill="#0284c7" />
+    
+    <!-- 表头控制圆点 (象征窗口/表格元数据) -->
+    <circle cx="-26" cy="-21" r="3.5" fill="#ffffff" />
+    <circle cx="-15" cy="-21" r="3.5" fill="#67e8f9" />
+    <circle cx="-4" cy="-21" r="3.5" fill="#34d399" />
+
+    <!-- 表格内部网格线与数据行模拟 -->
+    <line x1="-40" y1="5" x2="40" y2="5" stroke="#334155" stroke-width="2" />
+    <line x1="-14" y1="-11" x2="-14" y2="29" stroke="#334155" stroke-width="2" />
+    <line x1="14" y1="-11" x2="14" y2="29" stroke="#334155" stroke-width="2" />
+
+    <!-- 表格行高亮数据条 (彩色字段块) -->
+    <rect x="-34" y="-4" width="14" height="5" rx="2.5" fill="#93c5fd" />
+    <rect x="-8" y="-4" width="16" height="5" rx="2.5" fill="#cbd5e1" />
+    <rect x="20" y="-4" width="14" height="5" rx="2.5" fill="#34d399" />
+
+    <rect x="-34" y="12" width="14" height="5" rx="2.5" fill="#cbd5e1" />
+    <rect x="-8" y="12" width="16" height="5" rx="2.5" fill="#93c5fd" />
+    <rect x="20" y="12" width="14" height="5" rx="2.5" fill="#38bdf8" />
+
+    <rect x="-34" y="21" width="14" height="5" rx="2.5" fill="#38bdf8" />
+    <rect x="-8" y="21" width="16" height="5" rx="2.5" fill="#34d399" />
+    <rect x="20" y="21" width="14" height="5" rx="2.5" fill="#cbd5e1" />
+  </g>
+
+  <!-- 迁移动态脉冲粒子 (流动感) -->
+  <circle cx="192" cy="118" r="5" fill="#67e8f9" filter="url(#softGlow)" />
+  <circle cx="320" cy="122" r="5" fill="#6ee7b7" filter="url(#softGlow)" />
+
+  <!-- 底部中心闪耀徽记：双向同步/迁移象征 -->
+  <g transform="translate(256, 428)">
+    <line x1="-130" y1="0" x2="130" y2="0" stroke="url(#borderGrad)" stroke-width="2" opacity="0.6" />
+    <circle cx="0" cy="0" r="15" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5" />
+    <path d="M -7,-4 L 0,-8 L 7,-4" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 7,4 L 0,8 L -7,4" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>
