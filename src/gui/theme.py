@@ -5,24 +5,34 @@ from ..core.config import AppConfig
 ARROW_SVG_CONTENT = """<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>"""
 
 
+import tempfile
+
 def get_down_arrow_path() -> str:
-    """获取下拉箭头图标路径，若不存在则自愈生成"""
+    """获取下拉箭头图标路径，优先使用自带资源，备用使用系统临时目录，避免污染用户数据目录"""
+    # 1. 优先使用 resources 目录下的文件
     try:
         res_dir = Path(__file__).resolve().parent / "resources"
-        res_dir.mkdir(parents=True, exist_ok=True)
         res_file = res_dir / "down_arrow.svg"
-        if not res_file.exists():
-            res_file.write_text(ARROW_SVG_CONTENT, encoding="utf-8")
+        if res_file.exists():
+            return res_file.resolve().as_posix()
+        res_dir.mkdir(parents=True, exist_ok=True)
+        res_file.write_text(ARROW_SVG_CONTENT, encoding="utf-8")
         return res_file.resolve().as_posix()
     except Exception:
-        data_file = AppConfig.get_data_dir() / "down_arrow.svg"
-        if not data_file.exists():
-            try:
-                data_file.parent.mkdir(parents=True, exist_ok=True)
-                data_file.write_text(ARROW_SVG_CONTENT, encoding="utf-8")
-            except Exception:
-                pass
-        return data_file.resolve().as_posix()
+        pass
+
+    # 2. 备用：在系统临时目录生成，确保 data/ 目录纯净（仅存放用户数据和日志）
+    try:
+        temp_dir = Path(tempfile.gettempdir()) / "table_migrate_tool_res"
+        temp_dir.mkdir(parents=True, exist_ok=True)
+        temp_file = temp_dir / "down_arrow.svg"
+        if not temp_file.exists():
+            temp_file.write_text(ARROW_SVG_CONTENT, encoding="utf-8")
+        return temp_file.resolve().as_posix()
+    except Exception:
+        pass
+
+    return ""
 
 
 def get_app_icon_path(extension: str = "ico") -> str:
